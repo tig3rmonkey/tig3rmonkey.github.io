@@ -1,0 +1,25 @@
+@keyframes typing {
+  from{ width: 0}
+}
+
+@keyframes caret{
+  50%{ border-color: transparent}
+}
+
+body{
+  font-family: 'Source Code Pro';
+  background-color: #262623;
+  color: #73A605;
+  padding: 20px;
+  font-size: 2.2em;
+  word-spacing: -0.4em;
+}
+
+h1{
+  width: 15ch;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .05em solid;
+  animation: typing 3s steps(15), caret 1s steps(1) infinite;
+}
+
