@@ -531,6 +531,7 @@ p {
     z-index: 100;
     display: none;
     border: 1px solid #000;
+    text-align: center;
   }
 
   .alert-success {

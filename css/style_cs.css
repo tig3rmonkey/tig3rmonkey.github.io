@@ -7,11 +7,11 @@
 }
 
 body{
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro', 'Courier New', Courier;
   background-color: #262623;
   color: #73A605;
-  padding: 20px;
-  font-size: 2.2em;
+  padding: 25px;
+  font-size: 1.2em;
   word-spacing: -0.4em;
 }
 
