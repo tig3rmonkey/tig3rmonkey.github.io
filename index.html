@@ -1,63 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BlackHat.nz &dash; Kane Bright&#58; Profile Card</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Kane Bright — blackhat.nz</title>
+
+  <!-- Google Fonts (dynamic — SRI not possible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Source+Code+Pro:wght@400;500&display=swap">
+
+  <!-- Font Awesome 6.7.2 (cdnjs) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+
   <link rel="stylesheet" href="./css/style.css">
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="alert alert-success" style="text-align: center;">
-  Check out my site on <a href="https://securityheaders.com/?q=https%3A%2F%2Fblackhat.nz&hide=on&followRedirects=on" target="_blank">Securityheaders.com</a> &amp; <a href="https://www.ssllabs.com/ssltest/analyze.html?d=blackhat.nz&hideResults=on&latest" target="_blank">Qualys SSL Labs</a>&#33;<button class="close">&times;</button>
-</div>
+  <!-- Scrolling terminal background, rendered via canvas in script.js -->
+  <canvas id="terminalBg" aria-hidden="true"></canvas>
 
-<aside class="profileCard">
-  <header>
-    <a href="https://blackhat.nz/#YouJustClickedMyProfilePicture">
-      <!--<img src="./images/IMG-1574.JPG" alt="profile picture">-->
-      <img src="./images/1679564312957.jpeg" alt="profile picture">
-    </a>
-    <h1>Kane Bright</h1>
-    <h2>BlackHat.nz</h2>
-  </header>
+  <!-- Radial vignette — darkens canvas centre so card reads cleanly -->
+  <div class="vignette" aria-hidden="true"></div>
 
-  <div class="profileBio">
-    <p>
-      IT Security Expert &dash; Proficient with many industry leading tools and methodologies. Find some helpful links on the <a href="links.html" target="_blank">following page</a>.
-    </p>
+  <!-- Alert banner, slides in after page load -->
+  <div class="alert" id="alert" role="status" aria-live="polite">
+    Check this site on
+    <a href="https://securityheaders.com/?q=https%3A%2F%2Fblackhat.nz&hide=on&followRedirects=on"
+       target="_blank" rel="noopener noreferrer">Securityheaders.com</a>
+    &amp;
+    <a href="https://www.ssllabs.com/ssltest/analyze.html?d=blackhat.nz&hideResults=on&latest"
+       target="_blank" rel="noopener noreferrer">Qualys SSL Labs</a>
+    <button class="alert__close" id="alertClose" aria-label="Dismiss">&times;</button>
   </div>
 
-  <ul class="socialLinks">
-    <li>
-      <a target="_blank" href="https://blackhatnz.wordpress.com">
-        <i class="fa fa-wordpress fa-2x"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://twitter.com/blackhatnz">
-        <i class="fa fa-twitter fa-2x"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://github.com/tig3rmonkey/">
-        <i class="fa fa-github fa-2x"></i>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" href="https://www.linkedin.com/in/kane-bright/">
-        <i class="fa fa-linkedin fa-2x"></i>
-      </a>
-    </li>
-  </ul>
-</aside>
-<script src="./js/script_index.js"></script>
+  <!-- Profile card -->
+  <main class="page-center">
+    <article class="card">
+
+      <header class="card__header">
+        <a href="https://blackhat.nz/#YouJustClickedMyProfilePicture"
+           rel="noopener noreferrer"
+           class="card__avatar-wrap">
+          <img src="./images/profile.jpg"
+               alt="Kane Bright with his two sons"
+               class="card__avatar">
+        </a>
+        <h1 class="card__name">Kane Bright</h1>
+        <p class="card__domain">blackhat.nz</p>
+        <p class="card__role">Infrastructure Security Engineer</p>
+      </header>
+
+      <p class="card__bio">
+        Background in API, web and mobile penetration testing.
+        Known for clear, repeatable approaches to identifying real risks
+        and driving issues through to resolution.
+      </p>
+
+      <hr class="card__rule">
+
+      <nav class="social" aria-label="Social profiles">
+        <ul>
+          <li>
+            <a href="https://blackhatnz.wordpress.com"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="WordPress blog">
+              <i class="fa-brands fa-wordpress" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/blackhatnz"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Twitter / X">
+              <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/tig3rmonkey/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/kane-bright/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </article>
+  </main>
+
+  <script src="./js/script.js"></script>
 </body>
 </html>
